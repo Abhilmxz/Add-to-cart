@@ -1,6 +1,8 @@
 import React from 'react';
 import { useCart } from 'react-use-cart';
 
+// CART LIST FUNCTION...
+
 const Cart = ()=>{
     const { 
         isEmpty,
@@ -13,12 +15,12 @@ const Cart = ()=>{
         emptyCart,
     } = useCart();
 
-    if(isEmpty) return <h1 className='text-center'>Your Cart is Empty</h1>
+    if(isEmpty) return <h1 className="text-center text-danger">Your Cart is Empty</h1>
     return(
         <section className='py-4 container'>
         <div className='row justify-content-center'>
             <div className='col-12'>
-                <h5>Cart ({totalUniqueItems}) total Items: ({totalItems})</h5>
+                <h5 className='text-success'>Cart ({totalUniqueItems}) total Items: ({totalItems})</h5>
                 <table className='table table-light table-hover m-0'>
                     <tbody>
                      {items.map((item,index)=>{
@@ -29,7 +31,7 @@ const Cart = ()=>{
                         </td>
                         <td>{item.title}</td>
                         <td>{item.price}</td>
-                        <td>Quantity({item.quantity})</td>
+                        <td className='text-info'>Quantity({item.quantity})</td>
                         <td>
                            <button className='btn btn-info ms-2'
                             onClick={() => updateItemQuantity(item.id, item.quantity -1)}
@@ -50,7 +52,7 @@ const Cart = ()=>{
                 </table>
             </div>
             <div className='col-auto ms-auto'>
-                <h2>Total price:${cartTotal}</h2>
+                <h2 className='text-success'>Total price:₹{cartTotal}</h2>
             </div>
             <div className='col-auto'>
                 <button 
